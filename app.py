@@ -1,11 +1,22 @@
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
+import os
+import gdown
 
 app = Flask(__name__)
 
+MODEL_PATH = "flight_price_pipeline.pkl"
+GDRIVE_FILE_ID = "1bpBZNZa3DJpAluzL0CaP6OfN2c1dMcvB"
+
+# Download model if not exists
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model from Google Drive...")
+    url = f"https://drive.google.com/uc?id={GDRIVE_FILE_ID}"
+    gdown.download(url, MODEL_PATH, quiet=False)
+
 # Load trained pipeline
-model = joblib.load("flight_price_pipeline.pkl")
+model = joblib.load(MODEL_PATH)
 
 
 @app.route("/", methods=["GET"])
