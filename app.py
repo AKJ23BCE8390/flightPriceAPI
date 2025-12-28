@@ -7,7 +7,7 @@ import gdown
 app = Flask(__name__)
 
 MODEL_PATH = "flight_price_pipeline.pkl"
-GDRIVE_FILE_ID = "1YQ1o_5aBotORxSHFGuRcSNHFLiGMPPH_"
+GDRIVE_FILE_ID = "1h0FOou99ilrXdbiqFZEBk5EZhTKJRi2q"
 
 
 # Download model if not exists
